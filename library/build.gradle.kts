@@ -1,18 +1,16 @@
 @file:Suppress("UnstableApiUsage")
 
 import java.net.HttpURLConnection
-import java.net.URL
+import java.nio.file.Paths
 import java.util.Base64
-
 
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
     id("maven-publish")
     id("signing")
 }
 
-version = "1.0.0"
+version = "1.0.1"
 
 android {
     namespace = "com.andymic.jpeg2k"
@@ -168,7 +166,7 @@ tasks.register("finalizeDeployment") {
         println("\n=== FINALIZING DEPLOYMENT FOR $myNamespace ===")
         println("Sending POST request to: $endpoint")
 
-        with(URL(endpoint).openConnection() as HttpURLConnection) {
+        with(Paths.get(endpoint).toUri().toURL().openConnection() as HttpURLConnection) {
             requestMethod = "POST"
             setRequestProperty("Authorization", auth)
 

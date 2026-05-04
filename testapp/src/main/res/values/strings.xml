@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JP2 Test</string>
+    <string name="test_image">Test Image</string>
 </resources>

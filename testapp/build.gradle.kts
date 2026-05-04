@@ -9,7 +9,6 @@ if (keystorePropertiesFile.exists()) {
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -19,7 +18,7 @@ android {
     }
 
     defaultConfig {
-        minSdk = 21
+        minSdk = 23
         compileSdk {
             version = release(36)
         }
@@ -50,9 +49,6 @@ android {
     }
     buildFeatures {
         viewBinding = true
-    }
-    kotlin {
-        jvmToolchain(11)
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
