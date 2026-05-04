@@ -1,7 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
 import java.net.HttpURLConnection
-import java.nio.file.Paths
+import java.net.URI
 import java.util.Base64
 
 plugins {
@@ -166,7 +166,7 @@ tasks.register("finalizeDeployment") {
         println("\n=== FINALIZING DEPLOYMENT FOR $myNamespace ===")
         println("Sending POST request to: $endpoint")
 
-        with(Paths.get(endpoint).toUri().toURL().openConnection() as HttpURLConnection) {
+        with(URI(endpoint).toURL().openConnection() as HttpURLConnection) {
             requestMethod = "POST"
             setRequestProperty("Authorization", auth)
 
